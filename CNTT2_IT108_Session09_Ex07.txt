@@ -1,0 +1,40 @@
+Bài 7: Gỡ Lỗi Trang Hướng Dẫn Nộp Bài Của Giảng Viên
+## Phần 1: Phân tích lỗi
+1. **Dòng 2 (`###Lưu ý quan trọng`):**
+* **Lỗi:** Thiếu khoảng trắng (space) sau dấu `###`.
+* **Hậu quả:** Hệ thống không nhận diện đây là tiêu đề (Heading), chỉ hiển thị thành văn bản thô `###Lưu ý quan trọng`.
+
+2. **Dòng 4 (`-Bước 1: Tạo tài khoản GitHub tại [GitHub](github.com)`):**
+* **Lỗi 1:** Thiếu khoảng trắng sau dấu gạch ngang `-`.
+* **Hậu quả:** Không tạo thành danh sách (List), bị biến thành văn bản thường kèm dấu gạch ngang.
+* **Lỗi 2:** Đường dẫn URL `github.com` thiếu giao thức `https://`.
+* **Hậu quả:** Link bị hiểu lầm là đường dẫn tương đối (tới file nội bộ) thay vì liên kết trang web ngoài.
+
+3. **Dòng 5 (`-Bước 2: ... **HNKS25CNTT1_IT101_Session08`):**
+* **Lỗi 1:** Thiếu khoảng trắng sau dấu gạch ngang `-`.
+* **Hậu quả:** Không tạo thành danh sách (List).
+* **Lỗi 2:** Thiếu dấu đóng in đậm `**` ở cuối tên repository.
+* **Hậu quả:** Văn bản từ vị trí đó trở đi không thể in đậm được như mong muốn.
+
+4. **Dòng 6 & 7 (`-Bước 3...`, `-Bước 4...`):**
+* **Lỗi:** Thiếu khoảng trắng sau dấu gạch ngang `-`.
+* **Hậu quả:** Không render thành các mục trong danh sách (List).
+
+5. **Dòng 9 (`> Deadline: ... *Nộp muộn sẽ bị trừ 50% điểm!**`):**
+* **Lỗi:** Bắt đầu bằng 1 dấu `*` nhưng lại kết thúc bằng 2 dấu `**` (`*Nộp muộn...**`).
+* **Hậu quả:** Lỗi bất đồng bộ định dạng (vừa nghiêng vừa đậm), khiến trình duyệt không thể render chữ in đậm/in nghiêng chính xác.
+
+## Phần 2: Sửa lỗi
+### 3. Đọan Markdown hoàn chỉnh đã sửa đúng cú pháp:
+## Hướng Dẫn Nộp Bài Tập - Session 08
+### Lưu ý quan trọng
+Các bước nộp bài:
+- Bước 1: Tạo tài khoản GitHub tại [GitHub](https://github.com)
+- Bước 2: Tạo repository mới đặt tên theo định dạng **HNKS25CNTT1_IT101_Session08**
+- Bước 3: Upload file .md của bài làm lên repository
+- Bước 4: Copy đường dẫn và nộp lên Portal
+> Deadline: Chủ nhật 23:59 – **Nộp muộn sẽ bị trừ 50% điểm!**
+
+### 4. Bẫy dữ liệu:
+* **Hiện tượng:** Nếu sinh viên gõ `github.com` thay vì `[https://github.com](https://github.com)`, trình duyệt/Markdown Parser sẽ hiểu đây là một **đường dẫn tương đối (relative link)** nội bộ thuộc trang web hiện tại (ví dụ: `[https://ten-mien-hien-tai.com/github.com](https://ten-mien-hien-tai.com/github.com)`).
+* **Tác hại:** Khi bấm vào liên kết, sinh viên sẽ nhận được lỗi **404 Not Found** (không tìm thấy trang) thay vì chuyển sang trang chủ GitHub.
